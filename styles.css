@@ -1,0 +1,23 @@
+/* Tiny Graph - minimal container styling */
+.tiny-graph-container {
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: transparent;
+  user-select: none;
+  margin: 6px 0;
+}
+.tiny-graph-container canvas {
+  display: block;
+  width: 100%;
+  image-rendering: crisp-edges;
+}
+.tiny-graph-error {
+  font-size: 12px;
+  color: var(--text-error, #e06c75);
+  padding: 4px 8px;
+  background: var(--background-secondary);
+  border-radius: 3px;
+}

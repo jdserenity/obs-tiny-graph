@@ -1,0 +1,10 @@
+{
+  "id": "tiny-graph",
+  "name": "Tiny Graph",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.0",
+  "description": "Embed compact interactive graphs in your notes using a code block. Custom Canvas2D, YAML config, three behaviors (default folder, filtered, manual).",
+  "author": "JD",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}
