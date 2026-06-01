@@ -109,4 +109,19 @@ describe('buildGraphData', () => {
     });
     expect(data.nodes.some(n => n.id.includes('2024-06-02'))).toBe(false);
   });
+
+  it('marks the host note as center in default folder mode', async () => {
+    const data = await buildGraphData(app, 'Daily/2024-06-01.md', {});
+    const host = data.nodes.find(n => n.id === 'Daily/2024-06-01.md');
+    expect(host?.isCenter).toBe(true);
+    expect(data.nodes.find(n => n.id === 'Daily/2024-06-02.md')?.isCenter).toBeFalsy();
+  });
+
+  it('marks filtered target as center', async () => {
+    const data = await buildGraphData(app, 'Daily/2024-06-01.md', {
+      mode: 'filtered',
+      target: 'Projects/Alpha/Note.md',
+    });
+    expect(data.nodes.find(n => n.id === 'Projects/Alpha/Note.md')?.isCenter).toBe(true);
+  });
 });

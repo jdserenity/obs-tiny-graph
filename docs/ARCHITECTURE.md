@@ -3,7 +3,7 @@
 Tiny Graph embeds compact interactive graphs inside notes using a code block. It is deliberately minimal and uses only Obsidian APIs plus a tiny bundled YAML parser and custom Canvas2D drawing.
 
 ## Product Intent (confirmed)
-Lightweight code-block-first plugin (`tiny-graph` fence, plugin id `tiny-graph`) that renders ~110-120px tall graphs anywhere. Default behavior (bare block) shows notes from the folder of the containing note. Supports explicit `folder:` override, `mode: filtered`, and `mode: manual` via YAML. Graphs are drawn with Canvas2D to match Obsidian native graph aesthetics via `--graph-*` CSS variables. Nodes are clickable and open in the active leaf.
+Lightweight code-block-first plugin (`tiny-graph` fence, plugin id `tiny-graph`) that renders ~180px tall graphs anywhere. Default behavior (bare block) shows notes from the folder of the containing note. Supports explicit `folder:` override, `mode: filtered`, and `mode: manual` via YAML. Graphs are drawn with Canvas2D to match Obsidian native graph aesthetics via `--graph-*` CSS variables. Nodes are clickable and open in the active leaf.
 
 ## Key Confirmed Decisions
 - No `mode: folder` syntax. Folder behavior is implicit default (or triggered by `folder:` key). The presence of the block in a note selects its folder.
@@ -11,7 +11,8 @@ Lightweight code-block-first plugin (`tiny-graph` fence, plugin id `tiny-graph`)
 - One fixed default height. Width follows the code block container.
 - Snapshot rendering only (no live metadata cache subscriptions in v1).
 - Build artifact layout required by obs-deploy: `npm run build` emits `dist/main.js`; `manifest.json` and `styles.css` live at repository root.
-- Rendering is custom Canvas2D (force-directed layout, hit-tested interaction). No vis-network or other graph libraries.
+- Rendering is custom Canvas2D (force-directed layout in `src/layout.ts`, hit-tested interaction). No vis-network or other graph libraries.
+- Host note (or filtered `target`) is marked `isCenter` on its node: larger, accent-colored, pinned at layout center.
 - Theming strictly via Obsidian's `--graph-node`, `--graph-line`, `--graph-node-focused`, `--graph-text` (with `--text-normal` fallbacks).
 
 ## Syntax (confirmed, v1)

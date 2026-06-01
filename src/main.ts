@@ -10,6 +10,7 @@ export default class TinyGraphPlugin extends Plugin {
 
   async onload() {
     this.registerMarkdownCodeBlockProcessor('tiny-graph', (source, el, ctx) => {
+      el.addClass('tiny-graph-block');
       this.renderBlock(source, el, ctx);
     });
 
@@ -19,7 +20,7 @@ export default class TinyGraphPlugin extends Plugin {
       id: 'insert-tiny-graph-block',
       name: 'Insert tiny-graph block',
       editorCallback: (editor) => {
-        const snippet = '```tiny-graph\n# folder: Projects/Alpha   (optional override)\n# mode: filtered     # or manual\n# target: "[[Note]]"\n# exclude: ["[[Private]]"]\n# nodes: ["[[A]]", "[[B]]"]\n# height: 110\n```';
+        const snippet = '```tiny-graph\n# folder: Projects/Alpha   (optional override)\n# mode: filtered     # or manual\n# target: "[[Note]]"\n# exclude: ["[[Private]]"]\n# nodes: ["[[A]]", "[[B]]"]\n\n```';
         editor.replaceSelection(snippet);
       },
     });

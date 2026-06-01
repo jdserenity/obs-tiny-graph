@@ -1,19 +1,67 @@
-/* Tiny Graph - minimal container styling */
+/* Tiny Graph — fill the Obsidian code-block shell edge-to-edge */
+
+/* Reading view: strip default code-block chrome so our canvas is the only frame */
+.markdown-preview-view .code-block:has(.tiny-graph-container),
+.markdown-preview-view .block-language-tiny-graph {
+  padding: 0 !important;
+  margin: 8px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.markdown-preview-view .code-block:has(.tiny-graph-container):hover,
+.markdown-preview-view .block-language-tiny-graph:hover {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Hide leftover source/pre chrome when Obsidian wraps the block */
+.markdown-preview-view .block-language-tiny-graph > pre,
+.markdown-preview-view .code-block:has(.tiny-graph-container) > pre {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.markdown-preview-view .code-block:has(.tiny-graph-container) .copy-code-button,
+.markdown-preview-view .block-language-tiny-graph .copy-code-button {
+  top: 4px;
+  right: 4px;
+  opacity: 0.35;
+}
+.markdown-preview-view .code-block:has(.tiny-graph-container):hover .copy-code-button,
+.markdown-preview-view .block-language-tiny-graph:hover .copy-code-button {
+  opacity: 0.85;
+}
+
+.tiny-graph-block {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .tiny-graph-container {
   display: block;
   width: 100%;
-  min-height: 80px;
+  min-height: 120px;
   overflow: hidden;
-  border-radius: 4px;
-  background: transparent;
+  border-radius: 8px;
+  background: var(--background-secondary);
   user-select: none;
-  margin: 6px 0;
+  margin: 0;
+  border: 1px solid var(--background-modifier-border, rgba(255, 255, 255, 0.1));
+  box-sizing: border-box;
 }
+
 .tiny-graph-container canvas {
   display: block;
   width: 100%;
-  image-rendering: crisp-edges;
+  cursor: grab;
 }
+
 .tiny-graph-error {
   font-size: 12px;
   color: var(--text-error, #e06c75);

@@ -6,7 +6,7 @@ Embed compact, interactive, custom-drawn graphs inside any note using a code blo
 - Explicit: `folder:`, `mode: filtered`, or `mode: manual` via YAML.
 - Canvas2D rendering styled with Obsidian's native graph CSS variables.
 - Click nodes to open notes. Hover highlights connections.
-- ~110-120 px tall by default. No settings UI. Simple and lightweight.
+- ~180px tall by default. No settings UI. Simple and lightweight.
 
 ## Install
 
@@ -65,7 +65,8 @@ nodes:
 - **Click** a node → opens the note.
 - **Hover** a node → highlights its connections.
 - **Drag** the background → pans the graph view around.
-- **Double-click** the graph → resets the pan.
+- **Scroll wheel** → zoom in/out (toward cursor).
+- **Double-click** the graph → resets pan and zoom.
 
 ## Why so few options?
 

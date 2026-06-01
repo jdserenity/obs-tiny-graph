@@ -12,6 +12,8 @@ export interface GraphNode {
   id: string;
   label: string;
   file: TFile | null;
+  /** The note this graph is "about" (host note, or filtered target). */
+  isCenter?: boolean;
 }
 
 export interface GraphLink {

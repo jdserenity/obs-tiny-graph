@@ -87,10 +87,20 @@ export async function buildGraphData(app: App, sourcePath: string, opts: GraphOp
 
   candidates = applyExclude(candidates, opts.exclude, app, sourcePath);
 
+  let centerPath: string | null = null;
+  if (mode === 'filtered') {
+    const targetRef = opts.target || sourcePath;
+    const center = resolveNote(targetRef, app, sourcePath);
+    centerPath = center?.path ?? null;
+  } else if (mode !== 'manual') {
+    centerPath = sourcePath;
+  }
+
   const nodes: GraphNode[] = candidates.map(f => ({
     id: f.path,
     label: f.basename || f.path.split('/').pop() || f.path,
     file: f,
+    isCenter: centerPath !== null && f.path === centerPath,
   }));
 
   const links = buildLinksWithin(candidates, app);
